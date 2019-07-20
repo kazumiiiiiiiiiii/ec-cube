@@ -80,6 +80,9 @@ class ProductType extends AbstractType
                 'multiple' => true,
                 'required' => false,
                 'mapped' => false,
+                'attr' => [
+                    'multiple' => 'multiple'
+                ],
             ])
             ->add('description_detail', TextareaType::class, [
                 'constraints' => [

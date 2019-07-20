@@ -810,9 +810,19 @@ class ProductControllerTest extends AbstractAdminWebTestCase
             __DIR__.'/../../../../../../html/upload/save_image/sand-1.png',
             $this->imageDir.'/sand-1.png'
         );
-        $image = new UploadedFile(
+        copy(
+            __DIR__.'/../../../../../../html/upload/save_image/sand-2.png',
+            $this->imageDir.'/sand-2.png'
+        );
+        $image1 = new UploadedFile(
             $this->imageDir.'/sand-1.png',
             'sand-1.png',
+            'image/png',
+            null, null, true
+        );
+        $image2 = new UploadedFile(
+            $this->imageDir.'/sand-2.png',
+            'sand-2.png',
             'image/png',
             null, null, true
         );
@@ -822,7 +832,7 @@ class ProductControllerTest extends AbstractAdminWebTestCase
                 'admin_product' => $formData,
             ],
             [
-                'admin_product' => ['product_image' => [$image]]
+                'admin_product' => ['product_image' => [$image1, $image2]]
             ],
             [
                 'HTTP_X-Requested-With' => 'XMLHttpRequest',
